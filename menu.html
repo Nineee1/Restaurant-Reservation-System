@@ -1,0 +1,223 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head>
+  <title>Menu</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <!-- Custom CSS for adjusting reservation time input -->
+  <style>
+    /* Adjust the left position of the reservation time input */
+    #time {
+      margin-left: -300px;
+    }
+  </style>
+
+  <script>
+    function validateForm() {
+      var selectedDate = new Date(document.getElementById("date").value);
+      var selectedDay = selectedDate.getDay(); // 6 (Sunday) - 5 (Saturday)
+
+      // Check if the selected day is Saturday (5) or Sunday (6)
+      if (selectedDay === 5 || selectedDay === 6) {
+        alert("Sorry, the restaurant is closed on weekends. Please choose a weekday for the reservation.");
+        return false; // Prevent form submission
+      }
+      return true; // Allow form submission
+    }
+  </script>
+</head>
+<body class="is-preload">
+
+<!-- Header -->
+<div id="header">
+  <div class="top">
+    <!-- Logo -->
+    <div id="logo">
+      <span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>
+      <h1 id="title">Jomi & Spencer</h1>
+      <p>Software developers</p>
+    </div>
+    <!-- Nav -->
+    <nav id="nav">
+      <ul>
+        <li><a href="index.html" id="top-link"><span class="icon solid fa-home">Home</span></a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="bottom">
+    <!-- Social Icons -->
+    <ul class="icons">
+      <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+      <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+      <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Main -->
+<div id="main">
+  <!-- Portfolio -->
+  <section id="portfolio" class="two">
+    <div class="container">
+      <header>
+        <h2>Menu</h2>
+      </header>
+      <p>Here at "fill in later" we serve a plethora of items including fresh made bread, steak, pufferfish, sushi, soup, and pasta!</p>
+        <div class="row">
+          <div class="col-6 col-12-mobile">
+            <header>
+              <h3>Bread</h3>
+            </header>
+            <article class="item">
+              <a href="#" class="image fit"><img src="https://th.bing.com/th/id/OIP.t8oNBU6Qm3QmcwM7pqFcwwAAAA?rs=1&pid=ImgDetMain" alt="Fresh baked bread" /></a>
+            </article>
+            <p>
+              Nutrition Facts <br>
+              Serving Size: 1 Slice (25g)<br>
+              Amount Per Serving:<br>
+              Calories: 70<br>
+              Total Fat: 1g<br>
+              Saturated Fat: 0g<br>
+              Trans Fat: 0g<br>
+              Cholesterol: 0mg<br>
+              Sodium: 130mg<br>
+              Total Carbohydrate: 13g<br>
+              Dietary Fiber: 1g<br>
+              Sugars: 1g<br>
+              Protein: 2g<br>
+            </p>
+          </div>
+          <div class="col-6 col-12-mobile">
+            <header>
+              <h3>Soup</h3>
+            </header>
+            <article class="item">
+              <a href="#" class="image fit"><img src="https://diethood.com/wp-content/uploads/2021/05/lobster-bisque-8.jpg" alt="Lobster bisque" /></a>
+            </article>
+            <p>
+              Nutrition Facts<br>
+              Serving Size: 1 cup (245g)<br>
+              Amount Per Serving:<br>
+              Calories: 110<br>
+              Total Fat: 2g<br>
+              Saturated Fat: 0.5g<br>
+              Trans Fat: 0g<br>
+              Cholesterol: 10mg<br>
+              Sodium: 890mg<br>
+              Total Carbohydrate: 18g<br>
+              Dietary Fiber: 2g<br>
+              Sugars: 3g<br>
+              Protein: 6g<br>
+            </p>
+          </div>
+          <div class="col-6 col-12-mobile">
+            <header>
+              <h3>Steak</h3>
+            </header>
+            <article class="item">
+              <a href="#" class="image fit"><img src="https://blog.thermoworks.com/wp-content/uploads/2017/06/ribeye_compound_butter_smoke_mk4-79-of-88.jpg" alt="Ribeye steak with compound butter and smoke"/></a>
+            </article>
+            <p>
+              Nutrition Facts <br>
+              Serving Size: 3 ounces (85g)<br>
+              Amount Per Serving:<br>
+              Calories: 210<br>
+              Total Fat: 12g<br>
+              Saturated Fat: 5g<br>
+              Trans Fat: 0.5g<br>
+              Cholesterol: 75mg<br>
+              Sodium: 55mg<br>
+              Total Carbohydrate: 0g<br>
+              Dietary Fiber: 0g<br>
+              Sugars: 0g<br>
+              Protein: 24g<br>
+            </p>
+          </div>
+          <div class="col-6 col-12-mobile">
+            <header>
+              <h3>Pufferfish</h3>
+            </header>
+            <article class="item">
+              <a href="#" class="image fit"><img src="https://kavenyou.com/wp-content/uploads/2019/07/Puffer-Fish-Bulgogi_1-1200x800.jpg" alt="Pufferfish" /></a>
+            </article>
+            <p>
+              Nutrition Facts (per 3 ounces, 85g) of Cooked Pufferfish <br>
+              Calories: 92<br>
+              Total Fat: 2.3g<br>
+              Saturated Fat: 0.6g<br>
+              Trans Fat: 0g<br>
+              Cholesterol: 26mg<br>
+              Sodium: 68mg<br>
+              Total Carbohydrate: 0g<br>
+              Dietary Fiber: 0g<br>
+              Sugars: 0g<br>
+              Protein: 17g<br>
+            </p>
+          </div>
+          <div class="col-6 col-12-mobile">
+            <header>
+              <h3>Sushi</h3>
+            </header>
+            <article class="item">
+              <a href="#" class="image fit"><img src="https://greenwich.fish/wp-content/uploads/2020/05/Sushi.jpg" alt="Just sushi" /></a>
+            </article>
+            <p>
+              Nutrition Facts (per 6-piece serving of basic sushi roll):<br>
+              Calories: Approximately 200-250<br>
+              Total Fat: Approximately 5-10g<br>
+              Saturated Fat: Varies based on ingredients, typically 1-2g<br>
+              Trans Fat: 0g<br>
+              Cholesterol: Varies based on ingredients, typically 20-40mg<br>
+              Sodium: Varies based on ingredients and soy sauce usage, typically 300-600mg<br>
+              Total Carbohydrate: Approximately 30-40g<br>
+              Dietary Fiber: 1-2g<br>
+              Sugars: Varies based on ingredients, typically 1-2g<br>
+              Protein: Approximately 6-8g<br>
+            </p>
+          </div>
+          <div class="col-6 col-12-mobile">
+            <header>
+              <h3>Pasta</h3>
+            </header>
+            <article class="item">
+              <a href="menu.html" class="image fit"><img src="https://th.bing.com/th/id/OIP.7NOngqtziKWl2CchvnbUXwAAAA?rs=1&pid=ImgDetMain" alt="Alfredo" /></a>
+            </article>
+            <p>
+              Nutrition Facts (per 2-ounce (56g) serving of cooked pasta):<br>
+              Calories: Approximately 200<br>
+              Total Fat: 1g<br>
+              Saturated Fat: 0g<br>
+              Trans Fat: 0g<br>
+              Cholesterol: 0mg<br>
+              Sodium: 0mg<br>
+              Total Carbohydrate: Approximately 42g<br>
+              Dietary Fiber: 2g<br>
+              Sugars: 1g<br>
+              Protein: 7g<br>
+            </p>
+          </div>
+        </div>
+    </div>
+  </section>
+</div>
+
+<!-- Footer -->
+<div id="footer">
+  <!-- Copyright -->
+  <ul class="copyright">
+    <li>&copy; Restaurant. All rights reserved.</li><li>
+  </ul>
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

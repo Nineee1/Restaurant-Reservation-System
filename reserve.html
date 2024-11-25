@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head>
+  <title>Book Reservation</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <!-- Custom CSS for adjusting reservation time input -->
+  <style>
+    /* Adjust the left position of the reservation time input */
+    #time {
+      margin-left: -300px;
+    }
+  </style>
+
+  <script>
+    function validateForm() {
+      var selectedDate = new Date(document.getElementById("date").value);
+      var selectedDay = selectedDate.getDay(); // 6 (Sunday) - 5 (Saturday)
+
+      // Check if the selected day is Saturday (5) or Sunday (6)
+      if (selectedDay === 5 || selectedDay === 6) {
+        alert("Sorry, the restaurant is closed on weekends. Please choose a weekday for the reservation.");
+        return false; // Prevent form submission
+      }
+      return true; // Allow form submission
+    }
+  </script>
+</head>
+<body class="is-preload">
+
+<!-- Header -->
+<div id="header">
+  <div class="top">
+    <!-- Logo -->
+    <div id="logo">
+
+      <h1 id="title">Jomi & Spencer</h1>
+      <p>Software developers</p>
+    </div>
+    <!-- Nav -->
+    <nav id="nav">
+      <ul>
+        <li><a href="index.html" id="top-link"><span class="icon solid fa-home">Home</span></a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="bottom">
+    <!-- Social Icons -->
+    <ul class="icons">
+      <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+      <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+      <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Main -->
+<div id="main">
+  <!-- Portfolio -->
+  <section id="portfolio" class="two">
+    <div class="container">
+      <header>
+        <h2>Book Reservation</h2>
+      </header>
+      <p>Here at RWS we serve a plethora of items including fresh made bread, steak, pufferfish, sushi, soup, and pasta!</p>
+      <form id="reservation-form" method="post" action="confirmation.php" onsubmit="return validateForm()">
+        <div class="row">
+          <div class="col-6 col-12-mobile"><input type="text" name="first" id="n" placeholder="Name" required="required" /></div>
+          <div class="col-6 col-12-mobile"><input type="email" name="email" placeholder="Email" id="e" required="required"/></div>
+          <div class="col-6 col-12-mobile"><input type="text" name="number" placeholder="Phone Number"  required="required" pattern="[0-9]{10}"/></div>
+          <label>Date:</label><input style="margin-top: 35px; padding-top: 0px"  type="date" name="date" id="date" required="required"/>
+          <div class="col-6 col-12-mobile"><input type="number" name="table" placeholder="Table Amount" required="required" min="1" /></div>
+          <div class="col-6 col-12-mobile">
+            <input type="time" name="time" id="time" required="required" min="14:00" max="22:00">
+          </div>
+          <div class="col-12">
+            <textarea name="message" placeholder="Message"></textarea>
+          </div>
+          <div class="col-12">
+            <input type="submit" name="submit" value="Book Reservation" id="s"/>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</div>
+
+<!-- Footer -->
+<div id="footer">
+  <!-- Copyright -->
+  <ul class="copyright">
+    <li>&copy; Restaurant. All rights reserved.</li><li>
+  </ul>
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const submitButton = document.getElementById("s");
+
+    submitButton.addEventListener("click", function (event) {
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", "confirmation.php", true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          // Check if the response contains the message indicating no slots available
+          if (xhr.responseText.includes("Sorry, there are no more slots available for this hour.")) {
+            // Prevent default form submission
+            event.preventDefault();
+            // Change the header text to indicate reservation not confirmed
+            document.querySelector("#header .top #logo h1").textContent = "Reservation Not Confirmed";
+            alert("Reservation not confirmed. Sorry, there are no more slots available for this hour. Please choose another time.");
+            // Disable the submit button
+            submitButton.disabled = true;
+          } else if (xhr.responseText.includes("Sorry, the restaurant is closed on weekends.")) {
+            // Prevent default form submission
+            event.preventDefault();
+            // Change the header text to indicate reservation not confirmed
+            document.querySelector("#header .top #logo h1").textContent = "Reservation Not Confirmed";
+            alert("Reservation not confirmed. Sorry, the restaurant is closed on weekends. Please choose a weekday for the reservation.");
+            // Disable the submit button
+            submitButton.disabled = true;
+          } else {
+            // If slots are available and it's not a weekend, submit the form
+            document.getElementById("reservation-form").submit();
+          }
+        }
+      };
+      // Send the form data as the request body
+      xhr.send(new FormData(document.getElementById("reservation-form")));
+    });
+  });
+
+</script>
+</body>
+</html>
